@@ -6,20 +6,19 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prettier": "npx prettier --config .prettierrc.yml --write ./src/*",
-    "start": "nodemon ./src/index.js"
+    "start": "nodemon src/index.js --exec babel-node"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "^5.16.0",
-    "eslint-config-google": "^0.12.0",
-    "prettier": "1.17.0",
-    "nodemon": "^1.18.11",
+    "@babel/polyfill": "^7.4.4",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
-    "@babel/polyfill": "^7.4.4",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0"
+    "eslint": "^5.16.0",
+    "eslint-config-google": "^0.12.0",
+    "nodemon": "^1.18.11",
+    "prettier": "1.17.0"
   },
   "dependencies": {
     "graphql-yoga": "^1.17.4"
