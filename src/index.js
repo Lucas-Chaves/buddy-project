@@ -1,3 +1,3 @@
-import { getFirstName, isValidPassword} from './user'
+import { getFirstName } from './user'
 
-console.log(getFirstName("Lucas fedido "))
+console.log(getFirstName('Lucas fedido '))
