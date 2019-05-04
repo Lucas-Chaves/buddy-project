@@ -1,4 +1,4 @@
-import {GraphQLServer} from 'graphql-yoga';
+import { GraphQLServer } from 'graphql-yoga'
 
 const typeDefs = `
     type Query{
@@ -13,18 +13,22 @@ const typeDefs = `
     `
 
 const resolvers = {
-    Query: {
-        lucas(){
-            return {nome: "Lucas 4h50",email: "Upaltasaventuras@gmail.com", idade: 25}
-        }
-    }
+  Query: {
+    lucas() {
+      return {
+        nome: 'Lucas 4h50',
+        email: 'Upaltasaventuras@gmail.com',
+        idade: 25,
+      }
+    },
+  },
 }
 
 const server = new GraphQLServer({
-    typeDefs,
-    resolvers,
-});
+  typeDefs,
+  resolvers,
+})
 
-server.start(()=>{
-    console.log("up altas aventuras")
-});
+server.start(() => {
+  console.log('up altas aventuras')
+})
