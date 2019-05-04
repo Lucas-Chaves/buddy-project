@@ -1,5 +1,6 @@
 import { GraphQLServer } from 'graphql-yoga'
 
+// dummy data
 const usuarios = [
   {
     id: 1,
@@ -63,6 +64,7 @@ const comentarios = [
   },
 ]
 
+// Definição dos Tipos
 const typeDefs = `
     type Query{
       usuario: User!
@@ -129,24 +131,37 @@ const resolvers = {
   },
   Avaliacao: {
     autor(parent, args, ctx, info) {
-      return usuarios.find((usuario) => {
+      return usuarios.find(usuario => {
         return usuario.id === parent.autor
       })
     },
     comentarios(parent, args, ctx, info) {
-      return comentarios.find((comments)=>{
-        return comments.autor === parent.id 
+      return comentarios.filter(comments => {
+        return comments.autor === parent.id
       })
+    },
   },
   User: {
     avaliacoes(parent, args, ctx, info) {
-      return rates.find((avaliacao)=>{
+      return rates.filter(avaliacao => {
         return avaliacao.autor === parent.id
       })
     },
     comentarios(parent, args, ctx, info) {
-      return comentarios.find((comments)=>{
+      return comentarios.filter(comments => {
         return comments.autor === parent.id
+      })
+    },
+  },
+  Comentario: {
+    autor(parent, args, ctx, info) {
+      return usuarios.find(usuario => {
+        return usuario.id === parent.autor
+      })
+    },
+    avaliacao(parent, args, ctx, info) {
+      return rates.find(rate => {
+        return rate.id === parent.avaliacao
       })
     },
   },
