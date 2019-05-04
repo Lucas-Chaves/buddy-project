@@ -65,6 +65,8 @@ const comentarios = [
 ]
 
 // Definição dos Tipos
+
+// TODO parametros nas queries, mutations 
 const typeDefs = `
     type Query{
       usuario: User!
@@ -98,6 +100,7 @@ const typeDefs = `
     }
     `
 
+//TODO separar resolvers em arquivos
 const resolvers = {
   Query: {
     usuario() {
