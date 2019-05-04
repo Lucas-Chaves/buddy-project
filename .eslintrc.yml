@@ -12,4 +12,8 @@ parserOptions:
 rules: 
   eol-last:
     - warn 
+  semi:
+    - 0
+  object-curly-spacing:
+    - 0
 
