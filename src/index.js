@@ -4,19 +4,19 @@ import uuidv4 from 'uuid/v4'
 // dummy data
 const usuarios = [
   {
-    id: 1,
+    id: '1',
     nome: 'Lucas luiz',
     email: 'Upaltasaventuras@gmail.com',
     idade: 25,
   },
   {
-    id: 2,
+    id: '2',
     nome: 'Lucas humanas',
     email: 'Upaltasaventuras2@gmail.com',
     idade: 25,
   },
   {
-    id: 3,
+    id: '3',
     nome: 'Lucas jorge',
     email: 'Upaltasaventuras3@gmail.com',
     idade: 25,
@@ -25,43 +25,43 @@ const usuarios = [
 
 const rates = [
   {
-    id: 11,
+    id: '11',
     titulo: 'Achei legal',
     avaliacao: 5,
-    autor: 1,
+    autor: '1',
   },
   {
-    id: 12,
+    id: '12',
     titulo: 'Achei legal',
     avaliacao: 5,
-    autor: 2,
+    autor: '2',
   },
   {
-    id: 13,
+    id: '13',
     titulo: 'Achei legal',
     avaliacao: 5,
-    autor: 3,
+    autor: '3',
   },
 ]
 
 const comentarios = [
   {
-    id: 101,
+    id: '101',
     texto: 'Podia ser melhor',
-    autor: "1",
-    avaliacao: 11,
+    autor: '1',
+    avaliacao: '11',
   },
   {
-    id: 102,
+    id: '102',
     texto: 'Podia ser melhor',
-    autor: "2",
-    avaliacao: 11,
+    autor: '2',
+    avaliacao: '11',
   },
   {
-    id: 103,
+    id: '103',
     texto: 'Podia ser melhor',
-    autor: "1",
-    avaliacao: 12,
+    autor: '1',
+    avaliacao: '12',
   },
 ]
 
@@ -116,7 +116,7 @@ const resolvers = {
   Query: {
     usuario() {
       return {
-        id: 4,
+        id: '4',
         nome: 'Lucas 4h50',
         email: 'Upaltasaventuras@gmail.com',
         idade: 25,
@@ -159,7 +159,6 @@ const resolvers = {
         id: uuidv4(),
         ...args,
       }
-      
       comentarios.push(comentario);
 
       return comentario;
