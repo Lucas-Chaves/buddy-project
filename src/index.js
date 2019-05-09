@@ -48,19 +48,19 @@ const comentarios = [
   {
     id: 101,
     texto: 'Podia ser melhor',
-    autor: 1,
+    autor: "1",
     avaliacao: 11,
   },
   {
     id: 102,
     texto: 'Podia ser melhor',
-    autor: 2,
+    autor: "2",
     avaliacao: 11,
   },
   {
     id: 103,
     texto: 'Podia ser melhor',
-    autor: 1,
+    autor: "1",
     avaliacao: 12,
   },
 ]
@@ -144,7 +144,7 @@ const resolvers = {
     },
   },
   Mutation: {
-    createUser(parent,args,ctx, info) {
+    createUser(parent, args, ctx, info) {
       const user = {
         id: uuidv4(),
         nome: args.nome,
@@ -155,14 +155,13 @@ const resolvers = {
       return user;
     },
     createComentario(parent, args, ctx, info) {
-      console.log(args);
       const comentario = {
         id: uuidv4(),
-        texto: args.texto,
-        autor: args.autor,
-        avaliacao: args.Avaliacao,
+        ...args,
       }
+      
       comentarios.push(comentario);
+
       return comentario;
     },
   },
@@ -173,8 +172,8 @@ const resolvers = {
       })
     },
     comentarios(parent, args, ctx, info) {
-      return comentarios.filter(comments => {
-        return comments.autor === parent.id
+      return comentarios.filter(comentario => {
+        return comentario.autor === parent.id
       })
     },
   },
@@ -185,15 +184,14 @@ const resolvers = {
       })
     },
     comentarios(parent, args, ctx, info) {
-      return comentarios.filter(comments => {
-        return comments.autor === parent.id
+      return comentarios.filter((comment) => {
+        return comment.autor === parent.id
       })
     },
   },
   Comentario: {
     autor(parent, args, ctx, info) {
-      console.log(parent);
-      return usuarios.find(usuario => {
+      return usuarios.find((usuario) => {
         return usuario.id === parent.autor
       })
     },
