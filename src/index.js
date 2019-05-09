@@ -1,4 +1,5 @@
 import { GraphQLServer } from 'graphql-yoga'
+import uuidv4 from 'uuid/v4'
 
 // dummy data
 const usuarios = [
@@ -75,6 +76,19 @@ const typeDefs = `
       comentarios: [Comentario!]!
       
     }
+    type Mutation{
+      createUser(
+        nome: String!
+        email: String!
+        idade: Int!
+      ): User!
+      createComentario(
+        texto: String!
+        autor: ID!
+        avaliacao: ID!
+      ): Comentario!
+      
+    }
     type User{
       id: ID!
       nome: String!
@@ -129,6 +143,29 @@ const resolvers = {
       return comentarios
     },
   },
+  Mutation: {
+    createUser(parent,args,ctx, info) {
+      const user = {
+        id: uuidv4(),
+        nome: args.nome,
+        email: args.email,
+        idade: args.idade,
+      }
+      usuarios.push(user);
+      return user;
+    },
+    createComentario(parent, args, ctx, info) {
+      console.log(args);
+      const comentario = {
+        id: uuidv4(),
+        texto: args.texto,
+        autor: args.autor,
+        avaliacao: args.Avaliacao,
+      }
+      comentarios.push(comentario);
+      return comentario;
+    },
+  },
   Avaliacao: {
     autor(parent, args, ctx, info) {
       return usuarios.find(usuario => {
@@ -155,6 +192,7 @@ const resolvers = {
   },
   Comentario: {
     autor(parent, args, ctx, info) {
+      console.log(parent);
       return usuarios.find(usuario => {
         return usuario.id === parent.autor
       })
